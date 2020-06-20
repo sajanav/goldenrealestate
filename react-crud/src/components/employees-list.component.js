@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
+import NoRecordPage from "../components/norecord-componet";
 import { Link } from "react-router-dom";
 import {
   MDBNavbar,
@@ -74,7 +75,10 @@ export default class EmployeeList extends Component {
    
       render() {
         const { employees, currentEmployee, currentIndex } = this.state;
-        if(employees){
+        if (employees.length == 0) {
+          console.log("building length is zero", employees.length);
+          return <NoRecordPage/>
+        } else {
         return (
             
             <div>

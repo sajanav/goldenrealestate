@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
+import NoRecordPage from "../components/norecord-componet";
 import { Link } from "react-router-dom";
 import {
   MDBNavbar,
@@ -26,8 +27,8 @@ export default class DefectList extends Component {
       this.refreshList = this.refreshList.bind(this);
   
       this.state = {
-        employees: [],
-        currentEmployee: null,
+        defects: [],
+        currentDefect: null,
         currentIndex: -1,
         searchName: ""
       };
@@ -71,7 +72,11 @@ export default class DefectList extends Component {
         });
       }
       render() {
-        const { employees, currentEmployee, currentIndex } = this.state;
+        const { defects, currentDefect, currentIndex } = this.state;
+        if (defects.length == 0) {
+          console.log("building length is zero", defects.length);
+          return <NoRecordPage/>
+        } else {
         return (
             
             <div>
@@ -85,46 +90,39 @@ export default class DefectList extends Component {
                <div className="col -md-6">
                 <h4>Defect List</h4>
                 <ul className="list-group">
-                  {employees &&
-                    employees.map((employee, index) => (
+                  {defects &&
+                    defects.map((defect, index) => (
                       <li
                         className={
                           "list-group-item " +
                           (index === currentIndex ? "active" : "")
                         }
-                        onClick={() => this.setActiveEmployee(employee, index)}
+                        onClick={() => this.setActiveEmployee(defect, index)}
                         key={index}
                        >
-                        {employee.employeeName}
+                        {defect}
                       </li>
                     ))}
                 </ul>
               </div>
               <div className="col-md-6">
-                {currentEmployee ? (
+                {currentDefect ? (
                   <div>
-                    <h4>Employee</h4>
+                    <h4>Defect</h4>
                     <div>
                       <label>
                         <strong>Name:</strong>
                       </label>{" "}
-                      {currentEmployee.employeeName}
+                      {currentDefect}
                     </div>
                     <div>
                       <label>
-                        <strong>Email ID:</strong>
+                        <strong>Description:</strong>
                       </label>{" "}
-                      {currentEmployee.emailID}
+                      {currentDefect}
                     </div>
-                    <div>
-                      <label>
-                        <strong>Contact No:</strong>
-                      </label>{" "}
-                      {currentEmployee.contactNo}
-                    </div>
-      
-                    <Link
-                      to={"/employees/" + currentEmployee.employeeID}
+                     <Link
+                      to={"/defects/" + currentDefect}
                       className="badge badge-warning"
                     >
                       Edit
@@ -141,4 +139,5 @@ export default class DefectList extends Component {
             </div>
           );
       }
+     } 
     }

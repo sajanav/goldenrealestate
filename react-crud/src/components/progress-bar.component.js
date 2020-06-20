@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
 import { Link } from "react-router-dom";
+import NoRecordPage from "../components/norecord-componet";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -26,8 +27,8 @@ export default class ProgressBarList extends Component {
       this.refreshList = this.refreshList.bind(this);
   
       this.state = {
-        employees: [],
-        currentEmployee: null,
+        progressBars: [],
+        currentProgressBar: null,
         currentIndex: -1,
         searchName: ""
       };
@@ -71,7 +72,11 @@ export default class ProgressBarList extends Component {
         });
       }
       render() {
-        const { employees, currentEmployee, currentIndex } = this.state;
+        const { progressBars, currentProgressBar, currentIndex } = this.state;
+        if (progressBars.length == 0) {
+          console.log("building length is zero", progressBars.length);
+          return <NoRecordPage/>
+        }else{
         return (
             
             <div>
@@ -85,46 +90,46 @@ export default class ProgressBarList extends Component {
                <div className="col -md-6">
                 <h4>Progress Bar</h4>
                 <ul className="list-group">
-                  {employees &&
-                    employees.map((employee, index) => (
+                  {progressBars &&
+                    progressBars.map((progressBar, index) => (
                       <li
                         className={
                           "list-group-item " +
                           (index === currentIndex ? "active" : "")
                         }
-                        onClick={() => this.setActiveEmployee(employee, index)}
+                        onClick={() => this.setActiveEmployee(progressBar, index)}
                         key={index}
                        >
-                        {employee.employeeName}
+                        {progressBar.employeeName}
                       </li>
                     ))}
                 </ul>
               </div>
               <div className="col-md-6">
-                {currentEmployee ? (
+                {currentProgressBar ? (
                   <div>
                     <h4>Employee</h4>
                     <div>
                       <label>
                         <strong>Name:</strong>
                       </label>{" "}
-                      {currentEmployee.employeeName}
+                      {currentProgressBar.employeeName}
                     </div>
                     <div>
                       <label>
                         <strong>Email ID:</strong>
                       </label>{" "}
-                      {currentEmployee.emailID}
+                      {currentProgressBar.emailID}
                     </div>
                     <div>
                       <label>
                         <strong>Contact No:</strong>
                       </label>{" "}
-                      {currentEmployee.contactNo}
+                      {currentProgressBar.contactNo}
                     </div>
       
                     <Link
-                      to={"/employees/" + currentEmployee.employeeID}
+                      to={"/progressBars/" + currentProgressBar.employeeID}
                       className="badge badge-warning"
                     >
                       Edit
@@ -140,5 +145,6 @@ export default class ProgressBarList extends Component {
             </div>
             </div>
           );
+         }
       }
     }
