@@ -3,21 +3,8 @@ import DefectDataService from "../services/defect.service";
 import NoRecordPage from "../components/norecord-componet";
 import { Link } from "react-router-dom";
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBMask,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
   MDBView,
-  MDBContainer,
-  MDBFormInline,
-  MDBAnimation
+  MDBContainer
 } from 'mdbreact';
 export default class DefectList extends Component {
     constructor(props) {
@@ -66,7 +53,7 @@ export default class DefectList extends Component {
       }
       render() {
         const { defects, currentDefect, currentIndex } = this.state;
-        if (defects.length == 0) {
+        if (defects.length === 0) {
           return <NoRecordPage/>
         } else {
         return (

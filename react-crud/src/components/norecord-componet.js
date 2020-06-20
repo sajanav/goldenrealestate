@@ -1,19 +1,10 @@
 import React, { Component } from "react";
 import {
-    MDBNavbar,
-    MDBNavbarBrand,
-    MDBNavbarNav,
-    MDBNavItem,
-    MDBNavLink,
-    MDBNavbarToggler,
-    MDBCollapse,
+  
     MDBMask,
     MDBRow,
-    MDBCol,
-    MDBBtn,
     MDBView,
     MDBContainer,
-    MDBFormInline,
     MDBAnimation
   } from 'mdbreact';
     export default class NoRecordPage extends Component {

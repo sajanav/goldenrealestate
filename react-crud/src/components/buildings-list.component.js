@@ -3,21 +3,9 @@ import BuildingDataService from "../services/building.service";
 import NoRecordPage from "../components/norecord-componet";
 import { Link } from "react-router-dom";
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBMask,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
+  
   MDBView,
-  MDBContainer,
-  MDBFormInline,
-  MDBAnimation
+  MDBContainer
 } from 'mdbreact';
 export default class BuildingList extends Component {
     constructor(props) {
@@ -66,7 +54,7 @@ export default class BuildingList extends Component {
       }
       render() {
         const { buildings, currentBuilding, currentIndex } = this.state;
-        if (buildings.length == 0) {
+        if (buildings.length === 0) {
           return <NoRecordPage/>
         } else {
         return (

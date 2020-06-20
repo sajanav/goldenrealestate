@@ -3,21 +3,9 @@ import EmployeeDataService from "../services/employee.service";
 import NoRecordPage from "../components/norecord-componet";
 import { Link } from "react-router-dom";
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBMask,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
+ 
   MDBView,
-  MDBContainer,
-  MDBFormInline,
-  MDBAnimation
+  MDBContainer
 } from 'mdbreact';
 export default class EmployeeList extends Component {
     constructor(props) {
@@ -75,7 +63,7 @@ export default class EmployeeList extends Component {
    
       render() {
         const { employees, currentEmployee, currentIndex } = this.state;
-        if (employees.length == 0) {
+        if (employees.length === 0) {
           console.log("building length is zero", employees.length);
           return <NoRecordPage/>
         } else {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import EmployeeList from "./components/employees-list.component";
@@ -11,20 +11,11 @@ import HomePage from "./components/home.component";
 
 import {
   MDBNavbar,
-  MDBNavbarBrand,
   MDBNavbarNav,
   MDBNavItem,
   MDBNavLink,
-  MDBNavbarToggler,
   MDBCollapse,
-  MDBMask,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
-  MDBView,
-  MDBContainer,
-  MDBFormInline,
-  MDBAnimation
+  MDBContainer
 } from 'mdbreact';
 class App extends Component {
 
@@ -49,7 +40,7 @@ class App extends Component {
                 <MDBCollapse  navbar>
                   <MDBNavbarNav left className="font-weight-bold">
                   <MDBNavItem active>
-                      <MDBNavLink to='/home' className='black-text'><i class="fas fa-home"></i></MDBNavLink>
+                      <MDBNavLink to='/home' className='black-text'><i className="fas fa-home"></i></MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem active>
                       <MDBNavLink to='/employees' className='black-text'>Employee</MDBNavLink>

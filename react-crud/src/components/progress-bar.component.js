@@ -3,21 +3,8 @@ import ProgressBarDataService from "../services/progressbar.service";
 import { Link } from "react-router-dom";
 import NoRecordPage from "../components/norecord-componet";
 import {
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
-  MDBMask,
-  MDBRow,
-  MDBCol,
-  MDBBtn,
-  MDBView,
-  MDBContainer,
-  MDBFormInline,
-  MDBAnimation
+   MDBView,
+  MDBContainer
 } from 'mdbreact';
 export default class ProgressBarList extends Component {
     constructor(props) {
@@ -26,7 +13,7 @@ export default class ProgressBarList extends Component {
       this.refreshList = this.refreshList.bind(this);
   
       this.state = {
-        progressBars: [],
+        progressBarDetails: [],
         currentProgressBar: null,
         currentIndex: -1,
         searchName: ""
@@ -65,16 +52,21 @@ export default class ProgressBarList extends Component {
         });
       }
       setActiveProgressBar(progressBar, index) {
+        
         this.setState({
           currentProgressBar: progressBar,
           currentIndex: index
         });
       }
+
+      showProgressBarDetails(progressBarDetail) {
+        
+        console.log("progressBarDetail",progressBarDetail);
+      }
       render() {
-        const { progressBars, currentProgressBar, currentIndex } = this.state;
-        if (progressBars.length == 0) {
-          console.log("building length is zero", progressBars.length);
-          return <NoRecordPage/>
+        const { progressBarDetails, currentProgressBar, currentIndex } = this.state;
+        if (!progressBarDetails) {
+                return <NoRecordPage/>
         }else{
         return (
             
@@ -89,17 +81,18 @@ export default class ProgressBarList extends Component {
                <div className="col -md-6">
                 <h4>Progress Bar</h4>
                 <ul className="list-group">
-                  {progressBars &&
-                    progressBars.map((progressBar, index) => (
+                  {progressBarDetails &&
+                    progressBarDetails.map((progressBarDetail, index) => (
                       <li
                         className={
                           "list-group-item " +
                           (index === currentIndex ? "active" : "")
                         }
-                        onClick={() => this.setActiveProgressBar(progressBar, index)}
+                        onClick={() => this.setActiveProgressBar(progressBarDetail, index)}
                         key={index}
                        >
-                        {progressBar.progressbarid}
+                        
+                        showProgressBarDetails(progressBarDetail);
 
                       </li>
                     ))}
