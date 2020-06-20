@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EmployeeDataService from "../services/employee.service";
+import DefectDataService from "../services/defect.service";
 import NoRecordPage from "../components/norecord-componet";
 import { Link } from "react-router-dom";
 import {
@@ -22,8 +22,7 @@ import {
 export default class DefectList extends Component {
     constructor(props) {
       super(props);
-      this.onChangeSearchName = this.onChangeSearchName.bind(this);
-      this.retrieveEmployees = this.retrieveEmployees.bind(this);
+      this.retrieveDefects = this.retrieveDefects.bind(this);
       this.refreshList = this.refreshList.bind(this);
   
       this.state = {
@@ -34,22 +33,16 @@ export default class DefectList extends Component {
       };
      }
      componentDidMount() {
-        this.retrieveEmployees();
+        this.retrieveDefects();
       }
     
-      onChangeSearchName(e) {
-        const searchTitle = e.target.value;
-    
-        this.setState({
-          searchTitle: searchTitle
-        });
-      }
+     
 
-      retrieveEmployees() {
-        EmployeeDataService.getAll()
+      retrieveDefects() {
+        DefectDataService.getAll()
           .then(response => {
             this.setState({
-                employees: response.data
+                defects: response.data
             });
             console.log(response.data);
           })
@@ -59,22 +52,21 @@ export default class DefectList extends Component {
       }
     
       refreshList() {
-        this.retrieveEmployees();
+        this.retrieveDefects();
         this.setState({
-          currentEmployee: null,
+          currentDefect: null,
           currentIndex: -1
         });
       }
-      setActiveEmployee(employee, index) {
+      setActiveDefect(defect, index) {
         this.setState({
-          currentEmployee: employee,
+          currentDefect: defect,
           currentIndex: index
         });
       }
       render() {
         const { defects, currentDefect, currentIndex } = this.state;
         if (defects.length == 0) {
-          console.log("building length is zero", defects.length);
           return <NoRecordPage/>
         } else {
         return (
@@ -97,10 +89,10 @@ export default class DefectList extends Component {
                           "list-group-item " +
                           (index === currentIndex ? "active" : "")
                         }
-                        onClick={() => this.setActiveEmployee(defect, index)}
+                        onClick={() => this.setActiveDefect(defect, index)}
                         key={index}
                        >
-                        {defect}
+                        {defect.defectname}
                       </li>
                     ))}
                 </ul>
@@ -113,13 +105,13 @@ export default class DefectList extends Component {
                       <label>
                         <strong>Name:</strong>
                       </label>{" "}
-                      {currentDefect}
+                      {currentDefect.defectname}
                     </div>
                     <div>
                       <label>
                         <strong>Description:</strong>
                       </label>{" "}
-                      {currentDefect}
+                      {currentDefect.defectdesc}
                     </div>
                      <Link
                       to={"/defects/" + currentDefect}
@@ -131,7 +123,7 @@ export default class DefectList extends Component {
                 ) : (
                   <div>
                     <br />
-                    <p>Please click on a Defect...</p>
+                    <p></p>
                   </div>
                 )}
               </div>

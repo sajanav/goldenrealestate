@@ -30,7 +30,6 @@ class App extends Component {
 
   componentDidMount() {
    
-    console.log("i am changed by navlink");
   }
   render() {
       return (
@@ -62,7 +61,7 @@ class App extends Component {
                       <MDBNavLink to='/defects'className='black-text'>Defect</MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem>
-                      <MDBNavLink to='/progresboards'className='black-text'>Progress Board</MDBNavLink>
+                      <MDBNavLink to='/progressbar'className='black-text'>Progress Board</MDBNavLink>
                     </MDBNavItem>
                   </MDBNavbarNav>
                  </MDBCollapse>
@@ -74,7 +73,7 @@ class App extends Component {
               <Route  component={EmployeeList} path="/employees" />
               <Route  component={BuildingList} path="/buildings" />
               <Route  component={DefectList} path="/defects" />
-              <Route  component={ProgressBarList} path="/progresboards" />
+              <Route  component={ProgressBarList} path="/progressbar" />
               <Route  component={HomePage} path="/home" />
 
             </Switch>

@@ -1,5 +1,5 @@
 import http from "../http-common";
-class ProgressBarService {
+class ProgressBarDataService {
     getAll() {
       return http.get("/api/progressbar");
     }
@@ -22,4 +22,4 @@ class ProgressBarService {
       return http.get(`/progressbar?name=${title}`);
     }
   }
-  export default new ProgressBarService();
+  export default new ProgressBarDataService();

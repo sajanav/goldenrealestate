@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EmployeeDataService from "../services/employee.service";
+import ProgressBarDataService from "../services/progressbar.service";
 import { Link } from "react-router-dom";
 import NoRecordPage from "../components/norecord-componet";
 import {
@@ -22,8 +22,7 @@ import {
 export default class ProgressBarList extends Component {
     constructor(props) {
       super(props);
-      this.onChangeSearchName = this.onChangeSearchName.bind(this);
-      this.retrieveEmployees = this.retrieveEmployees.bind(this);
+      this.retrieveProgressBar = this.retrieveProgressBar.bind(this);
       this.refreshList = this.refreshList.bind(this);
   
       this.state = {
@@ -34,7 +33,7 @@ export default class ProgressBarList extends Component {
       };
      }
      componentDidMount() {
-        this.retrieveEmployees();
+        this.retrieveProgressBar();
       }
     
       onChangeSearchName(e) {
@@ -45,11 +44,11 @@ export default class ProgressBarList extends Component {
         });
       }
 
-      retrieveEmployees() {
-        EmployeeDataService.getAll()
+      retrieveProgressBar() {
+        ProgressBarDataService.getAll()
           .then(response => {
             this.setState({
-                employees: response.data
+              progressBars: response.data
             });
             console.log(response.data);
           })
@@ -59,15 +58,15 @@ export default class ProgressBarList extends Component {
       }
     
       refreshList() {
-        this.retrieveEmployees();
+        this.retrieveProgressBar();
         this.setState({
-          currentEmployee: null,
+          currentProgressBar: null,
           currentIndex: -1
         });
       }
-      setActiveEmployee(employee, index) {
+      setActiveProgressBar(progressBar, index) {
         this.setState({
-          currentEmployee: employee,
+          currentProgressBar: progressBar,
           currentIndex: index
         });
       }
@@ -97,10 +96,11 @@ export default class ProgressBarList extends Component {
                           "list-group-item " +
                           (index === currentIndex ? "active" : "")
                         }
-                        onClick={() => this.setActiveEmployee(progressBar, index)}
+                        onClick={() => this.setActiveProgressBar(progressBar, index)}
                         key={index}
                        >
-                        {progressBar.employeeName}
+                        {progressBar.progressbarid}
+
                       </li>
                     ))}
                 </ul>
@@ -129,7 +129,7 @@ export default class ProgressBarList extends Component {
                     </div>
       
                     <Link
-                      to={"/progressBars/" + currentProgressBar.employeeID}
+                      to={"/progressbar/" + currentProgressBar.employee.employeeName}
                       className="badge badge-warning"
                     >
                       Edit
@@ -138,7 +138,7 @@ export default class ProgressBarList extends Component {
                 ) : (
                   <div>
                     <br />
-                    <p>Please click on an Item...</p>
+                    <p></p>
                   </div>
                 )}
               </div>
