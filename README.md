@@ -1,4 +1,4 @@
-# goldenrealestate --> Front End Application in Reacj js for Golden Real Estate
+# goldenrealestate --> Front End Application in React js for Golden Real Estate
 
 This is the React front end Application  for Golden  Real  Estate project.It contains services, components ,axios,mdbootstrap.
 Sources from where I have referred and downloaded necessary requirements are 
@@ -28,13 +28,16 @@ add/edit/delete all the itenaries and progress status
 8.Home page contains a contact me button which will take you to my linkedin profile in case you want to contact me in future . 
 9. It can be deployed in AZURE,AWS clouds .
 
+10. If you want to change the port , just change .env file 
+
 Features of application :
 
 1. Home page which depicts details 
 2. Employee Menu --> which will list all the employees and you will be able to select and view a particular employee (Add/Edit/Delete will be available in premium version)
 3. Building Menu --> which will list all the buildings and you will be able to select and view a particular building (Add/Edit/Delete will be available in premium version) 
 4. Defect Menu --> which will list all the defects  and you will be able to select and view a particular defect   (Add/Edit/Delete will be available in premium version)
-5.Progress Bar  -->which will the latest status of assigned work per building , per person , per defect  (Add/Edit/Delete will be available in premium version)
+
+5. Progress Bar  -->which will the latest status of assigned work per building , per person , per defect  (Add/Edit/Delete will be available in premium version)
 
 
 Issues which I faced while developing the application :
@@ -76,8 +79,12 @@ for the below response of the API .
 
 I was trying this.state.progressBarDetails.map() which took my  time . It was resolved by comparing the data structure of response  in edit plus and console and issue is resolved by calling this.state.progressBarDetails.progressBarDetails.map().
 
+4. I was getting CORS error as my back end application was running on different port . I have fixed it by adding 
+@CrossOrigin(origins = "*") for all of my controllers .Again you can verify the same in my back end git repo .
 
 
+NOTES :
+IDE I used is visual studio code . And axios will enable direct conversion of JSON objects which is easy to debug and it prevent CSRF attacks on your sites . 
 
 
 
