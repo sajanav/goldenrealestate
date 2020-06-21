@@ -34,7 +34,8 @@ Features of application :
 2. Employee Menu --> which will list all the employees and you will be able to select and view a particular employee (Add/Edit/Delete will be available in premium version)
 3. Building Menu --> which will list all the buildings and you will be able to select and view a particular building (Add/Edit/Delete will be available in premium version) 
 4. Defect Menu --> which will list all the defects  and you will be able to select and view a particular defect   (Add/Edit/Delete will be available in premium version)
-5.Progress Bar  -->which will the latest status of assigned work per building , per person , per defect  (Add/Edit/Delete will be available in premium version)
+
+5. Progress Bar  -->which will the latest status of assigned work per building , per person , per defect  (Add/Edit/Delete will be available in premium version)
 
 
 Issues which I faced while developing the application :
