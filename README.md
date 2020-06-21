@@ -27,6 +27,7 @@ add/edit/delete all the itenaries and progress status
 7. Home page contains details of the project as well as features in this version . 
 8.Home page contains a contact me button which will take you to my linkedin profile in case you want to contact me in future . 
 9. It can be deployed in AZURE,AWS clouds .
+10.If you want to change the port , just change .env file 
 
 Features of application :
 
