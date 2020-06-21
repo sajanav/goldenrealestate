@@ -101,13 +101,7 @@ export default class DefectList extends Component {
                       </label>{" "}
                       {currentDefect.defectdesc}
                     </div>
-                     <Link
-                      to={"/defects/" + currentDefect}
-                      className="badge badge-warning"
-                    >
-                      Edit
-                    </Link>
-                  </div>
+                   </div>
                 ) : (
                   <div>
                     <br />

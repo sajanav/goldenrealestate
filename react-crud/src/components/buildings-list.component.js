@@ -102,13 +102,7 @@ export default class BuildingList extends Component {
                       </label>{" "}
                       {currentBuilding.location}
                     </div>
-                     <Link
-                      to={"/buildings/" + currentBuilding}
-                      className="badge badge-warning"
-                    >
-                      Edit
-                    </Link>
-                  </div>
+                   </div>
                 ) : (
                   <div>
                     <br />

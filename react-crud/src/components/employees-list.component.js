@@ -65,7 +65,6 @@ export default class EmployeeList extends Component {
       render() {
         const { employees, currentEmployee, currentIndex } = this.state;
         if (employees.length === 0) {
-          console.log("building length is zero", employees.length);
           return <NoRecordPage/>
         } else {
         return (
@@ -123,14 +122,7 @@ export default class EmployeeList extends Component {
                       </label>{" "}
                       {currentEmployee.contactNo}
                     </div>
-      
-                    <Link
-                      to={"/employees/" + currentEmployee.employeeID}
-                      className="badge badge-warning"
-                    >
-                      Edit
-                    </Link>
-                  </div>
+                   </div>
                 ) : (
                   <div>
                     <br />
