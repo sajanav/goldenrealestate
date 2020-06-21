@@ -1,143 +1,148 @@
 import React, { Component } from "react";
 import ProgressBarDataService from "../services/progressbar.service";
-import { Link } from "react-router-dom";
 import NoRecordPage from "../components/norecord-componet";
+import CopyRightPage from "../components/copyright.component";
+
 import {
-   MDBView,
+
+  MDBView,
   MDBContainer
 } from 'mdbreact';
 export default class ProgressBarList extends Component {
-    constructor(props) {
-      super(props);
-      this.retrieveProgressBar = this.retrieveProgressBar.bind(this);
-      this.refreshList = this.refreshList.bind(this);
+  constructor(props) {
+    super(props);
+    this.retrieveProgressBar = this.retrieveProgressBar.bind(this);
+    this.refreshList = this.refreshList.bind(this);
+
+    this.state = {
+      progressBarDetails: [
+        { }
+      ],
+      progressBarDetailsHeader:  [
+        {
+            "employee Name": "",
+            "defect Name": "",
+            "building Name": "",
+            "status": ""
+        }
+      ],
+      currentProgressBar: null,
+      currentIndex: -1,
+      searchName: "",
+
+    };
+
+  }
+
+  renderTableData() {
+      return this.state.progressBarDetails.progressBarDetails?.map((student, index) => {
+      const {id, employeeName, defectName, buildingName, status } = student //destructuring
+      return (
+        <tr key={id}>
+          
+          <td>{employeeName}</td>
+          <td>{defectName}</td>
+          <td>{buildingName}</td>
+          <td>{status}</td>
+        </tr>
+      )
+    })
+  }
+
+  renderTableHeader() {
+    let header = Object.keys(this.state.progressBarDetailsHeader[0])
+    return header.map((key, index) => {
+      return <th key={index}>{key.toUpperCase()}</th>
+    })
+  }
+  componentDidMount() {
+    ProgressBarDataService.getAll()
+      .then(response => {
+
+        this.setState({
+        progressBarDetails: response.data
+        });
+          
+        this.setState(this.state); 
+       })
+      .catch(e => {
+        console.log(e);
+      });
+
+  }
+
+  onChangeSearchName(e) {
+    const searchTitle = e.target.value;
+
+    this.setState({
+      searchTitle: searchTitle
+    });
+  }
+
+  retrieveProgressBar() {
+    ProgressBarDataService.getAll()
+      .then(response => {
+
+        this.setState({
+        progressBarDetails:response.data
+        });
+       
+     
+      
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
   
-      this.state = {
-        progressBarDetails: [],
-        currentProgressBar: null,
-        currentIndex: -1,
-        searchName: ""
-      };
-     }
-     componentDidMount() {
-        this.retrieveProgressBar();
-      }
-    
-      onChangeSearchName(e) {
-        const searchTitle = e.target.value;
-    
-        this.setState({
-          searchTitle: searchTitle
-        });
-      }
+  refreshList() {
+    this.retrieveProgressBar();
+    this.setState({
+      currentProgressBar: null,
+      currentIndex: -1
+    });
+  }
+  setActiveProgressBar(progressBar, index) {
+    this.setState({
+      currentProgressBar: progressBar,
+      currentIndex: index
+    });
+  }
+  render() {
+  
+    if (!this.state.progressBarDetails) {
+      return <NoRecordPage />
+    } else {
+      return (
 
-      retrieveProgressBar() {
-        ProgressBarDataService.getAll()
-          .then(response => {
-            this.setState({
-              progressBars: response.data
-            });
-            console.log(response.data);
-          })
-          .catch(e => {
-            console.log(e);
-          });
-      }
-    
-      refreshList() {
-        this.retrieveProgressBar();
-        this.setState({
-          currentProgressBar: null,
-          currentIndex: -1
-        });
-      }
-      setActiveProgressBar(progressBar, index) {
-        
-        this.setState({
-          currentProgressBar: progressBar,
-          currentIndex: index
-        });
-      }
 
-      showProgressBarDetails(progressBarDetail) {
-        
-        console.log("progressBarDetail",progressBarDetail);
-      }
-      render() {
-        const { progressBarDetails, currentProgressBar, currentIndex } = this.state;
-        if (!progressBarDetails) {
-                return <NoRecordPage/>
-        }else{
-        return (
-            
-            <div>
-              <MDBView>
+        <div>
+           <MDBView>
               <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
-            className='d-flex justify-content-center black-text align-items-center'
-          />
+            className='d-flex justify-content-center black-text align-items-center'/>
             </MDBView>
-            <div className="list row">
-               <div className="col -md-6">
-                <h4>Progress Bar</h4>
-                <ul className="list-group">
-                  {progressBarDetails &&
-                    progressBarDetails.map((progressBarDetail, index) => (
-                      <li
-                        className={
-                          "list-group-item " +
-                          (index === currentIndex ? "active" : "")
-                        }
-                        onClick={() => this.setActiveProgressBar(progressBarDetail, index)}
-                        key={index}
-                       >
-                        
-                        showProgressBarDetails(progressBarDetail);
-
-                      </li>
-                    ))}
-                </ul>
-              </div>
-              <div className="col-md-6">
-                {currentProgressBar ? (
-                  <div>
-                    <h4>Employee</h4>
-                    <div>
-                      <label>
-                        <strong>Name:</strong>
-                      </label>{" "}
-                      {currentProgressBar.employeeName}
-                    </div>
-                    <div>
-                      <label>
-                        <strong>Email ID:</strong>
-                      </label>{" "}
-                      {currentProgressBar.emailID}
-                    </div>
-                    <div>
-                      <label>
-                        <strong>Contact No:</strong>
-                      </label>{" "}
-                      {currentProgressBar.contactNo}
-                    </div>
-      
-                    <Link
-                      to={"/progressbar/" + currentProgressBar.employee.employeeName}
-                      className="badge badge-warning"
-                    >
-                      Edit
-                    </Link>
-                  </div>
-                ) : (
+          {this.state.progressBarDetails ? (
+            <div>
+          <h3 id='title' align='center'>Progress DashBoard</h3>
+          <table id='progressbar'>
+            <thead>
+              <tr>{this.renderTableHeader()}</tr>
+              </thead>
+              <tbody>
+              {this.renderTableData(this.state.progressBarDetails)}
+            </tbody>
+          </table>
+          </div>): (
                   <div>
                     <br />
                     <p></p>
                   </div>
-                )}
-              </div>
-            </div>
-            </div>
-          );
-         }
-      }
+                )
+            }
+        <CopyRightPage/>
+        </div>
+      );
     }
+  }
+}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
 import NoRecordPage from "../components/norecord-componet";
 import CopyRightPage from "../components/copyright.component";
-import { Link } from "react-router-dom";
 import {
  
   MDBView,
