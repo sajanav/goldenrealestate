@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import CopyRightPage from "../components/copyright.component";
+
 import {
-    
     MDBMask,
     MDBRow,
     MDBCol,
@@ -26,10 +27,10 @@ import {
                   </h1>
                   <hr className='hr-light' />
                    <h6 className='mb-4'>
-                    You can create your itenaries and track the status .This application empowers you to 
-                    manage the resources and closely monitor them in an efficient way with a set of
-                    clean and user friendly screens .If you have any feedbacks, please feel free to Contact
-                    us . 
+                    This application empowers you to manage the resources and closely monitor them in an efficient way with a set of
+                    clean and user friendly screens .Please note that this is a trial demo version so create and
+                    update functionalies are not available in this release.We have a premium version with 
+                    create and update functionalities.
                   </h6>
                   <button  onClick={this.handleClick.bind(this)}
                   >Contact Us</button>
@@ -48,16 +49,7 @@ import {
             </MDBRow>
           </MDBContainer>
         </MDBView>
-      <MDBContainer>
-          <MDBRow className='py-5'>
-            <MDBCol md='12' className='text-center'>
-            <h6 className='mb-4'>
-              <i class="fas fa-copyright"></i>
-              2020 Copyright:Sajana Vijayan
-              </h6>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
+        <CopyRightPage/>
         </div>
         );
         }

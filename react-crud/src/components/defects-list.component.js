@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DefectDataService from "../services/defect.service";
 import NoRecordPage from "../components/norecord-componet";
 import { Link } from "react-router-dom";
+import CopyRightPage from "../components/copyright.component";
 import {
   MDBView,
   MDBContainer
@@ -115,6 +116,7 @@ export default class DefectList extends Component {
                 )}
               </div>
             </div>
+            <CopyRightPage/>
             </div>
           );
       }

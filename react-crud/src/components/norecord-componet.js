@@ -9,7 +9,6 @@ import {
   } from 'mdbreact';
     export default class NoRecordPage extends Component {
     render() {
-        console.log("i am inside no record page");
         return (<MDBView>
             <MDBMask className='white-text gradient' />
             <MDBContainer 

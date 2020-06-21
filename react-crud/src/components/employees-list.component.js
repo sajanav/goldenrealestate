@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EmployeeDataService from "../services/employee.service";
 import NoRecordPage from "../components/norecord-componet";
+import CopyRightPage from "../components/copyright.component";
 import { Link } from "react-router-dom";
 import {
  
@@ -73,8 +74,7 @@ export default class EmployeeList extends Component {
               <MDBView>
               <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
-            className='d-flex justify-content-center black-text align-items-center'
-          />
+            className='d-flex justify-content-center black-text align-items-center'/>
             </MDBView>
             <div className="list row">
                <div className="col -md-6">
@@ -139,6 +139,7 @@ export default class EmployeeList extends Component {
                 )}
               </div>
             </div>
+            <CopyRightPage/>
             </div>
           );
       }
