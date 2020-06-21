@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import {
-  
     MDBMask,
     MDBRow,
     MDBView,
     MDBContainer,
     MDBAnimation
   } from 'mdbreact';
+import CopyRightPage from "./copyright.component";
     export default class NoRecordPage extends Component {
     render() {
-        return (<MDBView>
+        return (
+        <div>
+        <MDBView>
             <MDBMask className='white-text gradient' />
             <MDBContainer 
               style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
@@ -24,7 +26,9 @@ import {
   
               </MDBRow>
             </MDBContainer>
-          </MDBView>);
+          </MDBView>
+          <CopyRightPage/>
+          </div>);
            }
        
 }

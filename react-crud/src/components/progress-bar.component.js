@@ -110,7 +110,7 @@ export default class ProgressBarList extends Component {
   }
   render() {
   
-    if (!this.state.progressBarDetails) {
+    if (this.state.progressBarDetails.length ===0) {
       return <NoRecordPage />
     } else {
       return (
@@ -122,7 +122,7 @@ export default class ProgressBarList extends Component {
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
             className='d-flex justify-content-center black-text align-items-center'/>
             </MDBView>
-          {this.state.progressBarDetails ? (
+          {this.state.progressBarDetails.length >1 ? (
             <div>
           <h3 id='title' align='center'>Progress DashBoard</h3>
           <table id='progressbar'>
@@ -135,8 +135,7 @@ export default class ProgressBarList extends Component {
           </table>
           </div>): (
                   <div>
-                    <br />
-                    <p></p>
+                    <NoRecordPage />
                   </div>
                 )
             }
