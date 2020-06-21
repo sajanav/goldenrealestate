@@ -77,8 +77,12 @@ for the below response of the API .
 
 I was trying this.state.progressBarDetails.map() which took my  time . It was resolved by comparing the data structure of response  in edit plus and console and issue is resolved by calling this.state.progressBarDetails.progressBarDetails.map().
 
+4. I was getting CORS error as my back end application was running on different port . I have fixed it by adding 
+@CrossOrigin(origins = "*") for all of my controllers .Again you can verify the same in my back end git repo .
 
 
+NOTES :
+IDE I used is visual studio code . And axios will enable direct conversion of JSON objects which is easy to debug and it prevent CSRF attacks on your sites . 
 
 
 
