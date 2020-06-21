@@ -1,5 +1,5 @@
 # goldenrealestate front End
-This is the react front end for golden real estate project.It contains services, components ,axios,mdbootstrap.
+This is the React front end Application  for Golden  Real  Estate project.It contains services, components ,axios,mdbootstrap.
 Sources from where I have referred and downloaded necessary requirements are 
 1. https://bezkoder.com/
 2.https://react.mdbootstrap.com/
