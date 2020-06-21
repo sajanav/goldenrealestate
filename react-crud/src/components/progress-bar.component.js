@@ -36,10 +36,9 @@ export default class ProgressBarList extends Component {
 
   renderTableData() {
       return this.state.progressBarDetails.progressBarDetails?.map((student, index) => {
-      const {id, employeeName, defectName, buildingName, status } = student //destructuring
+      const {progressbarid, employeeName, defectName, buildingName, status } = student //destructuring
       return (
-        <tr key={id}>
-          
+        <tr key={progressbarid}>
           <td>{employeeName}</td>
           <td>{defectName}</td>
           <td>{buildingName}</td>
@@ -109,21 +108,17 @@ export default class ProgressBarList extends Component {
     });
   }
   render() {
-  
-    if (this.state.progressBarDetails.length ===0) {
+    if (!this.state.progressBarDetails ||this.state.progressBarDetails.length===1) {
       return <NoRecordPage />
     } else {
       return (
-
-
-        <div>
+       <div>
            <MDBView>
               <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
             className='d-flex justify-content-center black-text align-items-center'/>
             </MDBView>
-          {this.state.progressBarDetails.length >1 ? (
-            <div>
+              <div>
           <h3 id='title' align='center'>Progress DashBoard</h3>
           <table id='progressbar'>
             <thead>
@@ -133,12 +128,7 @@ export default class ProgressBarList extends Component {
               {this.renderTableData(this.state.progressBarDetails)}
             </tbody>
           </table>
-          </div>): (
-                  <div>
-                    <NoRecordPage />
-                  </div>
-                )
-            }
+          </div>
         <CopyRightPage/>
         </div>
       );
